@@ -26,7 +26,13 @@ export const Paragraph = styled.p`
 
 export const Label = styled.label`
   font-family: ${({ theme }) => theme.fonts.secondary};
-  font-size: 1rem;
+  font-size: 0.625rem;
+  color: ${(props) => props.color || props.theme.colors.neutral};
+  margin-right: 5px;
+
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 export const Link = styled.a`
