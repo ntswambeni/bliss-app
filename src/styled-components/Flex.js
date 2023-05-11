@@ -8,6 +8,10 @@ export const FlexJustifyCenter = styled(Flex)`
   justify-content: center;
 `;
 
+export const FlexJustifyBetween = styled(Flex)`
+  justify-content: space-between;
+`;
+
 export const FlexAlignCenter = styled(Flex)`
   align-items: center;
 `;

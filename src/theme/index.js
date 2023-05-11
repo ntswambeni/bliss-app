@@ -13,4 +13,7 @@ export const defaultTheme = {
     primary: "'Raleway', sans-serif",
     secondary: "'Roboto', sans-serif",
   },
+  fontSize: {
+    logo: 50,
+  },
 };
