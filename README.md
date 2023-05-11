@@ -4,6 +4,11 @@ This webapp is developed for the sole purpose of a frontent job application in B
 
 # Getting started
 
+## Link to API
+
+create a `.env` file in the root of the project
+add the following line to the file `REACT_APP_API_URL=https://private-anon-563fd54118-blissrecruitmentapi.apiary-mock.com`. this is the server address
+
 ## Installation
 
 run `npm i`
