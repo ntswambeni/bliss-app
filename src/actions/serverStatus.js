@@ -13,7 +13,7 @@ export const handleSetServerStatus = () => {
     dispatch(setLoading(true));
     try {
       const response = await getServerStatus();
-      const { data } = response;
+      const data = await response.json();
       dispatch(setServerStatus(data.status));
       dispatch(setLoading(false));
     } catch (error) {
