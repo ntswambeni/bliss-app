@@ -35,6 +35,8 @@ export const SearchButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 0 10px;
+  cursor: pointer;
+
   &:active {
     background-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.surface};
