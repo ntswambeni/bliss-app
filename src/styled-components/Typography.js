@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Header1 = styled.h1`
@@ -22,6 +23,9 @@ export const Paragraph = styled.p`
   font-family: ${({ theme }) => theme.fonts.primary};
   font-size: 1rem;
   color: ${(props) => props.color || props.theme.colors.neutral};
+  @media (min-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const Label = styled.label`
@@ -35,7 +39,8 @@ export const Label = styled.label`
   }
 `;
 
-export const Link = styled.a`
+export const Anchor = styled(Link)`
   font-family: ${({ theme }) => theme.fonts.primary};
   font-size: 1rem;
+  text-decoration: none;
 `;

@@ -16,7 +16,7 @@ const SearchBar = ({ theme }) => {
       <SearchForm role="search">
         <SearchInput type="text" maxLength={30} />
         <SearchButton>
-          <span class="material-symbols-outlined">search</span>
+          <span className="material-symbols-outlined">search</span>
         </SearchButton>
       </SearchForm>
       <FilterContainer>
@@ -31,7 +31,7 @@ const SearchBar = ({ theme }) => {
           backgroundColor={theme.colors.cancelAction}
           color={theme.colors.surface}
         >
-          Clear filters <span class="material-symbols-outlined">close</span>
+          Clear filters <span className="material-symbols-outlined">close</span>
         </Button>
       </FilterContainer>
     </SearchCard>
