@@ -29,6 +29,7 @@ const SearchBar = ({ theme }) => {
         <Button
           marginLeftLarge="30px"
           backgroundColor={theme.colors.cancelAction}
+          color={theme.colors.surface}
         >
           Clear filters <span class="material-symbols-outlined">close</span>
         </Button>
