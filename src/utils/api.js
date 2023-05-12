@@ -21,3 +21,14 @@ export const voteQuestion = ({ questionId, vote }) => {
     headers: { "Content-type": "application/json" },
   });
 };
+
+export const shareScreen = ({ destinationEmail, urlContent }) => {
+  return fetch(
+    `${APIURL}/share?destination_email=${destinationEmail}&content_url=${urlContent}`,
+    {
+      method: "POST",
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+};

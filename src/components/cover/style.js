@@ -8,4 +8,7 @@ export const Overlay = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
 `;

@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 
-import Navbar from "../../components/navbar";
 import {
   handleFilterQuestions,
   handleGetQuestions,
@@ -18,6 +17,8 @@ import SearchBar from "../../components/search-bar";
 import QuestionCard from "../../components/question-card";
 import { FlexWrap } from "../../styled-components/Flex";
 import { FloatActionButton } from "../../styled-components/Buttons";
+import ShareScreen from "../../components/share-screen";
+import Cover from "../../components/cover";
 
 const QuestionList = ({
   dispatch,
@@ -27,7 +28,7 @@ const QuestionList = ({
   offset,
   searchOffset,
 }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get("filter");
   //this functions is called when the user scrolls to the bottom of the page
   //it hits the api resquesting for more questions
@@ -35,6 +36,7 @@ const QuestionList = ({
     dispatch(handleGetQuestions({ limit: 10, offset: offset, filter: "" }));
   };
 
+  const [showShareScreen, setShowShareScreen] = useState(false);
   const loadFilteredQuestions = () => {
     dispatch(
       handleFilterQuestions({
@@ -58,8 +60,8 @@ const QuestionList = ({
     }
   };
 
-  const handleShareScreen = () => {
-    //TODO
+  const handleshowScreen = () => {
+    setShowShareScreen((prev) => !prev);
   };
 
   const list = searchQuery === null ? questionsList : filteredQuestionsList;
@@ -71,6 +73,7 @@ const QuestionList = ({
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
+    // eslint-disable-next-line
   }, [searchParams]);
 
   return (
@@ -99,9 +102,14 @@ const QuestionList = ({
         )}
       </ContainerFluid>
       {searchQuery !== null && (
-        <FloatActionButton onClick={handleShareScreen}>
+        <FloatActionButton onClick={handleshowScreen}>
           <span className="material-symbols-outlined">share</span>
         </FloatActionButton>
+      )}
+      {showShareScreen && (
+        <Cover>
+          <ShareScreen handleHide={handleshowScreen} />
+        </Cover>
       )}
     </>
   );

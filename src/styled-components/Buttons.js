@@ -9,6 +9,11 @@ export const Button = styled.button`
   border: none;
   color: ${(props) => props.color};
   background-color: ${(props) => props.backgroundColor};
+  width: ${(props) => props.width};
+  padding: ${(props) => props.padding};
+  margin: ${(props) => props.margin};
+  font-family: ${({ theme }) => theme.fonts.secondary};
+  font-size: ${(props) => props.fontSize};
   span {
     font-size: 16px;
   }

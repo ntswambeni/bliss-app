@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { connect } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { handleSelectQuestion } from "../../actions/questions";
 import { BreadCrumb } from "../../styled-components/BreadCrumb";
 import { Container, ContainerFluid } from "../../styled-components/Containers";
@@ -8,6 +8,9 @@ import { Header2, Paragraph } from "../../styled-components/Typography";
 import { DateLabel, ThumbnailCountainer } from "./style";
 import { ThumbnailPicture } from "../../styled-components/Images";
 import AnswerOption from "../../components/answer-option";
+import { FloatActionButton } from "../../styled-components/Buttons";
+import Cover from "../../components/cover";
+import ShareScreen from "../../components/share-screen";
 
 const withRouter = (Component) => {
   const ComponentWithRouterProp = (props) => {
@@ -24,9 +27,15 @@ const QuestionDetails = ({
   loading,
   questionId,
 }) => {
+  const [showShareScreen, setShowShareScreen] = useState(false);
+
   //load question base on query id
   const loadQuestion = (questionId) => {
     dispatch(handleSelectQuestion(questionId));
+  };
+
+  const handleshowScreen = () => {
+    setShowShareScreen((prev) => !prev);
   };
 
   const createOption = (index) => {
@@ -44,6 +53,7 @@ const QuestionDetails = ({
 
   useEffect(() => {
     loadQuestion(questionId);
+    // eslint-disable-next-line
   }, [questionId]);
 
   const formatDate = (date) => {
@@ -106,6 +116,14 @@ const QuestionDetails = ({
             ))}
         </ThumbnailCountainer>
       </Container>
+      <FloatActionButton onClick={handleshowScreen}>
+        <span className="material-symbols-outlined">share</span>
+      </FloatActionButton>
+      {showShareScreen && (
+        <Cover>
+          <ShareScreen handleHide={handleshowScreen} />
+        </Cover>
+      )}
     </>
   );
 };
