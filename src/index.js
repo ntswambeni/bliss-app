@@ -16,19 +16,19 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    text-decoration: none;
   }
+  a{color:inherit}
  `;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Router>
-        <ThemeProvider theme={defaultTheme}>
-          <GlobalStyle />
-          <App />
-        </ThemeProvider>
-      </Router>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <Router>
+      <ThemeProvider theme={defaultTheme}>
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
+    </Router>
+  </Provider>
 );
