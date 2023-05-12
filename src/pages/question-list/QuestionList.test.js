@@ -1,27 +1,31 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { Provider } from "react-redux";
-import { ThemeProvider } from "styled-components";
 
 import rootReducer from "../../reducers";
+import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "../../theme";
-import SearchBar from ".";
+import QuestionList from "./QuestionList";
 
-describe("SearchBar component", () => {
-  it("displays a search form", () => {
+describe("QuestionList component", () => {
+  it("displays 10 questions on load", async () => {
     const store = configureStore({ reducer: rootReducer });
     render(
       <MemoryRouter>
         <Provider store={store}>
           <ThemeProvider theme={defaultTheme}>
-            <SearchBar />
+            <QuestionList />
           </ThemeProvider>
         </Provider>
       </MemoryRouter>
     );
 
-    const searchForm = screen.getByRole("search");
-    expect(searchForm).toBeInTheDocument();
+    await waitFor(async () => {
+      const questionList = await screen.findAllByText(
+        /Favourite programming language?/i
+      );
+      expect(questionList).toHaveLength(10);
+    });
   });
 });
