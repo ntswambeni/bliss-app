@@ -5,6 +5,9 @@ import { handleSetServerStatus } from "./actions/serverStatus";
 import Loading from "./pages/loading/Loading";
 import Spinner from "./components/spinner";
 
+import { Route, Routes } from "react-router";
+import QuestionList from "./pages/question-list/QuestionList";
+
 function App({ dispatch, serverStatus, loading }) {
   useEffect(() => {
     dispatch(handleSetServerStatus());
@@ -20,10 +23,12 @@ function App({ dispatch, serverStatus, loading }) {
   }
 
   return (
-    <div>
-      App
+    <>
+      <Routes>
+        <Route path="/questions" element={<QuestionList />}></Route>
+      </Routes>
       {loading && <Spinner />}
-    </div>
+    </>
   );
 }
 

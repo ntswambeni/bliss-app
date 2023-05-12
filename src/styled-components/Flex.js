@@ -19,3 +19,8 @@ export const FlexAlignCenter = styled(Flex)`
 export const FlexCenter = styled(FlexJustifyCenter, FlexAlignCenter)`
   height: 100%;
 `;
+
+export const FlexWrap = styled(Flex)`
+  flex-wrap: wrap;
+  gap: 15px;
+`;

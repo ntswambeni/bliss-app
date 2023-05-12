@@ -1,12 +1,12 @@
 import React from "react";
 import { withTheme } from "styled-components";
+import { Link } from "react-router-dom";
 
 import { NavbarContainer, UserProfile } from "./style";
 import { Header1, Label } from "../../styled-components/Typography";
 import { ThumbanailPicture } from "../../styled-components/Images";
 import { ContainerFluid } from "../../styled-components/Containers";
 import { FlexJustifyBetween } from "../../styled-components/Flex";
-import { Link } from "react-router-dom";
 
 const Navbar = ({ theme }) => {
   return (
@@ -24,7 +24,9 @@ const Navbar = ({ theme }) => {
               alt="user avatar"
               src="https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg"
             />
-            <Label as="span">Felizardo</Label>
+            <Label as="span" color={theme.colors.surface}>
+              Felizardo
+            </Label>
           </UserProfile>
         </FlexJustifyBetween>
       </ContainerFluid>

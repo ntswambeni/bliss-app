@@ -1,10 +1,11 @@
 import React from "react";
+import { withTheme } from "styled-components";
+
 import { Card, CardBody } from "./style";
 import { ThumbanailPicture } from "../../styled-components/Images";
-import { withTheme } from "styled-components";
-import { Anchor, Label, Paragraph } from "../../styled-components/Typography";
+import { Label, Paragraph } from "../../styled-components/Typography";
 
-const QuestionCard = ({ theme }) => {
+const QuestionCard = ({ theme, question, thumbnail }) => {
   return (
     <Card>
       <ThumbanailPicture
@@ -12,15 +13,15 @@ const QuestionCard = ({ theme }) => {
         widthLargeScreen="100%"
         heightSmallScreen="120px"
         alt="question thumbnail"
-        src="https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)"
+        src={thumbnail}
         borderRadius={theme.border.radius}
       />
       <CardBody>
-        <Paragraph>Favorite programming language?</Paragraph>
+        <Paragraph>{question}</Paragraph>
       </CardBody>
-      <Anchor>
+      <Label>
         Details<span className="material-symbols-outlined">navigate_next</span>
-      </Anchor>
+      </Label>
     </Card>
   );
 };

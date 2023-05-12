@@ -8,6 +8,7 @@ export const SearchCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 15px 0;
 `;
 
 export const SearchInput = styled.input`

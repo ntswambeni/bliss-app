@@ -23,14 +23,12 @@ const GlobalStyle = createGlobalStyle`
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Router>
-        <ThemeProvider theme={defaultTheme}>
-          <GlobalStyle />
-          <App />
-        </ThemeProvider>
-      </Router>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <Router>
+      <ThemeProvider theme={defaultTheme}>
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
+    </Router>
+  </Provider>
 );

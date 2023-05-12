@@ -5,12 +5,19 @@ export const Card = styled.div`
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   padding: 15px;
   text-align: right;
+
   a {
     color: ${({ theme }) => theme.colors.primary};
     font-size: 14px;
     margin-bottom: 15px;
     span {
       font-size: 18px;
+      vertical-align: middle;
+    }
+  }
+  label {
+    color: ${({ theme }) => theme.colors.primary};
+    span {
       vertical-align: middle;
     }
   }

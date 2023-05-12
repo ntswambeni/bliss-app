@@ -44,3 +44,10 @@ export const Anchor = styled(Link)`
   font-size: 1rem;
   text-decoration: none;
 `;
+
+export const CardLink = styled(Link)`
+  width: 100%;
+  @media (min-width: 768px) {
+    width: calc(50% - 7.5px);
+  }
+`;

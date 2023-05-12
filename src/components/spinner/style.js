@@ -19,7 +19,7 @@ export const Hourglass = styled.div`
   height: 80px;
   &:after {
     content: " ";
-    position: absolute;
+    position: fixed;
     bottom: 30px;
     left: 30px;
     z-index: 1000;
