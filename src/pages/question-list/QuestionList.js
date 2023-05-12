@@ -75,7 +75,6 @@ const QuestionList = ({
 
   return (
     <>
-      <Navbar></Navbar>
       <BreadCrumb>
         <ContainerFluid>
           <Header2>Questions list</Header2>

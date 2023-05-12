@@ -1,4 +1,4 @@
-import { getAllQuestions } from "../utils/api";
+import { getAllQuestions, retriveQuestion, voteQuestion } from "../utils/api";
 import { setLoading } from "./loading";
 
 export const GET_QUESTIONS = "GET_QUESTIONS";
@@ -21,14 +21,14 @@ const clearQuestionsFilter = () => ({
   type: CLEAR_QUESTIONS_FILTER,
 });
 
-const selectQuestion = (question) => ({
+const selectQuestion = (selectedQuestion) => ({
   type: SELECT_QUESTION,
-  question,
+  selectedQuestion,
 });
 
-const voteQuestionOption = (question) => ({
+const voteQuestionOption = (votedQuestion) => ({
   type: VOTE_QUESTION_OPTION,
-  question,
+  votedQuestion,
 });
 
 export const handleGetQuestions = (queryParams) => {
@@ -66,6 +66,36 @@ export const handleClearQuestionsFilter = () => {
     dispatch(setLoading(true));
     try {
       dispatch(clearQuestionsFilter());
+      dispatch(setLoading(false));
+    } catch (error) {
+      console.error(error);
+      dispatch(setLoading(false));
+    }
+  };
+};
+
+export const handleSelectQuestion = (questionId) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+    try {
+      const response = await retriveQuestion(questionId);
+      const selectedQuestion = await response.json();
+      dispatch(selectQuestion(selectedQuestion));
+      dispatch(setLoading(false));
+    } catch (error) {
+      console.error(error);
+      dispatch(setLoading(false));
+    }
+  };
+};
+
+export const handleVoteOption = ({ questionId, vote }) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+    try {
+      const response = await voteQuestion({ questionId, vote });
+      const votedQuestion = await response.json();
+      dispatch(voteQuestionOption(votedQuestion));
       dispatch(setLoading(false));
     } catch (error) {
       console.error(error);

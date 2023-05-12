@@ -6,6 +6,7 @@ export const BreadCrumb = styled.div`
   text-align: center;
   color: ${({ theme }) => theme.colors.surface};
   padding: 5px 0;
+  margin-bottom: 25px;
   div {
     position: relative;
   }
@@ -14,5 +15,14 @@ export const BreadCrumb = styled.div`
     left: 0;
     top: 50%;
     transform: translate(0, -50%);
+    font-family: ${({ theme }) => theme.fonts.secondary};
+    color: ${({ theme }) => theme.colors.surface};
+    span {
+      vertical-align: bottom;
+      font-size: 18px;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;

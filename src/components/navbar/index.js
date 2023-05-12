@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import { NavbarContainer, UserProfile } from "./style";
 import { Header1, Label } from "../../styled-components/Typography";
-import { ThumbanailPicture } from "../../styled-components/Images";
+import { ThumbnailPicture } from "../../styled-components/Images";
 import { ContainerFluid } from "../../styled-components/Containers";
 import { FlexJustifyBetween } from "../../styled-components/Flex";
 
@@ -19,7 +19,7 @@ const Navbar = ({ theme }) => {
             </Header1>
           </Link>
           <UserProfile>
-            <ThumbanailPicture
+            <ThumbnailPicture
               marginRight="10px"
               alt="user avatar"
               src="https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg"

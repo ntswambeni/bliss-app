@@ -2,13 +2,13 @@ import React from "react";
 import { withTheme } from "styled-components";
 
 import { Card, CardBody } from "./style";
-import { ThumbanailPicture } from "../../styled-components/Images";
+import { ThumbnailPicture } from "../../styled-components/Images";
 import { Label, Paragraph } from "../../styled-components/Typography";
 
 const QuestionCard = ({ theme, question, thumbnail }) => {
   return (
     <Card>
-      <ThumbanailPicture
+      <ThumbnailPicture
         widthSmallScreen="100%"
         widthLargeScreen="100%"
         heightSmallScreen="120px"

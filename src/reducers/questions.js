@@ -39,9 +39,15 @@ const questions = (
         searchOffset: 0,
       };
     case SELECT_QUESTION:
-      return state;
+      return {
+        ...state,
+        selectedQuestion: action.selectedQuestion,
+      };
     case VOTE_QUESTION_OPTION:
-      return state;
+      return {
+        ...state,
+        selectedQuestion: action.votedQuestion,
+      };
     default:
       return state;
   }
