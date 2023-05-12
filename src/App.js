@@ -5,7 +5,7 @@ import { handleSetServerStatus } from "./actions/serverStatus";
 import Loading from "./pages/loading/Loading";
 import Spinner from "./components/spinner";
 
-import { Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 import QuestionList from "./pages/question-list/QuestionList";
 import QuestionDetails from "./pages/question-details/QuestionDetails";
 import NavOutlet from "./pages/nav-outlet/NavOutlet";
@@ -14,6 +14,7 @@ import Cover from "./components/cover";
 import { Widget } from "./styled-components/Widget";
 import { Header1, Paragraph } from "./styled-components/Typography";
 import { withTheme } from "styled-components";
+import NotFound from "./pages/not-found/NotFound";
 
 function App({ dispatch, serverStatus, loading, theme }) {
   useEffect(() => {
@@ -54,10 +55,12 @@ function App({ dispatch, serverStatus, loading, theme }) {
   return (
     <>
       <Routes>
+        <Route path="/" exact element={<Navigate to="/questions" />} />
         <Route path="/questions" element={<NavOutlet />}>
           <Route path="" element={<QuestionList />} />
           <Route path=":id" element={<QuestionDetails />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
       {loading && <Spinner />}
     </>
