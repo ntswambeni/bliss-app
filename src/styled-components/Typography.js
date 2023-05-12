@@ -23,6 +23,8 @@ export const Paragraph = styled.p`
   font-family: ${({ theme }) => theme.fonts.primary};
   font-size: 1rem;
   color: ${(props) => props.color || props.theme.colors.neutral};
+  text-align: center;
+  margin: ${({ margin }) => margin || "1rem 0"};
   @media (min-width: 768px) {
     font-size: 1.2rem;
   }

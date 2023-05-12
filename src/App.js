@@ -7,6 +7,8 @@ import Spinner from "./components/spinner";
 
 import { Route, Routes } from "react-router";
 import QuestionList from "./pages/question-list/QuestionList";
+import QuestionDetails from "./pages/question-details/QuestionDetails";
+import NavOutlet from "./pages/nav-outlet/NavOutlet";
 
 function App({ dispatch, serverStatus, loading }) {
   useEffect(() => {
@@ -25,7 +27,10 @@ function App({ dispatch, serverStatus, loading }) {
   return (
     <>
       <Routes>
-        <Route path="/questions" element={<QuestionList />}></Route>
+        <Route path="/questions" element={<NavOutlet />}>
+          <Route path="" element={<QuestionList />} />
+          <Route path=":id" element={<QuestionDetails />} />
+        </Route>
       </Routes>
       {loading && <Spinner />}
     </>
