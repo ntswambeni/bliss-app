@@ -16,3 +16,15 @@ export const Button = styled.button`
     margin-left: ${({ marginLeftLarge }) => marginLeftLarge || 0};
   }
 `;
+
+export const ActionButton = styled.button`
+  border: none;
+  border-radius: ${({ theme }) => theme.border.radius};
+  background-color: ${(props) =>
+    props.backgroundColor || props.theme.colors.action};
+  color: ${(props) => props.color || props.theme.colors.surface};
+  padding: 5px 7px;
+  span {
+    font-size: 30px;
+  }
+`;
