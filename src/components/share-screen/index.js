@@ -3,7 +3,6 @@ import { Header3, Label } from "../../styled-components/Typography";
 import { Button } from "../../styled-components/Buttons";
 import { ShareScreenContainer } from "./style";
 import { withTheme } from "styled-components";
-import { handleShareScreen } from "../../actions/questions";
 import { shareScreen } from "../../utils/api";
 
 const ShareScreen = ({ theme, handleHide }) => {

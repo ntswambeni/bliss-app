@@ -1,4 +1,3 @@
-import shareScreen from "../components/share-screen";
 import { getAllQuestions, retriveQuestion, voteQuestion } from "../utils/api";
 import { setLoading } from "./loading";
 
