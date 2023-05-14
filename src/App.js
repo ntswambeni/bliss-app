@@ -13,12 +13,18 @@ import NotFound from "./pages/not-found/NotFound";
 import NoConnectivity from "./components/no-connectivity/NoConnectivity";
 import { createGlobalStyle } from "styled-components";
 
+const GlobalStyle = createGlobalStyle`
+  html, body { height: ${({ isOnline }) => !isOnline && "100%"}; overflow:${({
+  isOnline,
+}) => !isOnline && "hidden"} 
+  }
+ `;
 function App({ dispatch, serverStatus, loading }) {
+  const isOnline = useNetwork();
+
   useEffect(() => {
     dispatch(handleSetServerStatus());
   }, [dispatch]);
-
-  const isOnline = useNetwork();
 
   if (serverStatus !== "OK") {
     return (
@@ -29,16 +35,10 @@ function App({ dispatch, serverStatus, loading }) {
     );
   }
 
-  const GlobalStyle = createGlobalStyle`
-  html, body { height: ${!isOnline && "100%"}; overflow: ${
-    !isOnline && "hidden"
-  }}
- `;
-
   return (
     <>
+      <GlobalStyle isOnline={isOnline} />
       {!isOnline && <NoConnectivity />}
-      <GlobalStyle />
       <Routes>
         <Route path="/" exact element={<Navigate to="/questions" />} />
         <Route path="/questions" element={<NavOutlet />}>
