@@ -21,7 +21,10 @@ const clearQuestionsFilter = () => ({
   type: CLEAR_QUESTIONS_FILTER,
 });
 
-const selectQuestion = (selectedQuestion) => ({
+// Selects question from loaded list of questions or the filtered questions
+// Used if the user goes to details page by clicking a question on the list
+// Receives a question object
+export const selectQuestion = (selectedQuestion) => ({
   type: SELECT_QUESTION,
   selectedQuestion,
 });
@@ -74,6 +77,9 @@ export const handleClearQuestionsFilter = () => {
   };
 };
 
+// Selects question from server if it was not yet loaded to the list of questions
+// Used if the user goes to details page using the url
+// Receives a question Id
 export const handleSelectQuestion = (questionId) => {
   return async (dispatch) => {
     dispatch(setLoading(true));
