@@ -47,6 +47,13 @@ const questions = (
       return {
         ...state,
         selectedQuestion: action.votedQuestion,
+        questionsList: [
+          ...state.questionsList.map((question) =>
+            question.id === action.votedQuestion.id
+              ? action.votedQuestion
+              : question
+          ),
+        ],
       };
     default:
       return state;

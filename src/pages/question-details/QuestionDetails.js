@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
-import { handleSelectQuestion } from "../../actions/questions";
+import { handleSelectQuestion, selectQuestion } from "../../actions/questions";
 import { BreadCrumb } from "../../styled-components/BreadCrumb";
 import { Container, ContainerFluid } from "../../styled-components/Containers";
 import { Header2, Paragraph } from "../../styled-components/Typography";
@@ -11,6 +11,7 @@ import AnswerOption from "../../components/answer-option";
 import { FloatActionButton } from "../../styled-components/Buttons";
 import Cover from "../../components/cover";
 import ShareScreen from "../../components/share-screen";
+import NotFound from "../not-found/NotFound";
 
 const withRouter = (Component) => {
   const ComponentWithRouterProp = (props) => {
@@ -26,12 +27,29 @@ const QuestionDetails = ({
   selectedQuestion,
   loading,
   questionId,
+  questionsList,
+  filteredQuestionsList,
 }) => {
   const [showShareScreen, setShowShareScreen] = useState(false);
 
   //load question base on query id
   const loadQuestion = (questionId) => {
-    dispatch(handleSelectQuestion(questionId));
+    //declares question object value from the questions list or the filtered list
+    const question =
+      questionsList.filter(
+        (question) => question.id === parseInt(questionId)
+      )[0] ||
+      filteredQuestionsList.filter(
+        (question) => question.id === parseInt(questionId)
+      )[0];
+
+    if (question) {
+      //gets the question object from the questions list or the filtered list
+      dispatch(selectQuestion(question));
+    } else {
+      //gets the question object from the server
+      dispatch(handleSelectQuestion(questionId));
+    }
   };
 
   const handleshowScreen = () => {
@@ -68,6 +86,10 @@ const QuestionDetails = ({
 
   if (loading) {
     return <div />;
+  }
+
+  if (!selectedQuestion) {
+    return <NotFound />;
   }
 
   return (
@@ -129,7 +151,10 @@ const QuestionDetails = ({
 };
 
 const mapStatetoProps = (
-  { questions: { selectedQuestion }, loading },
+  {
+    questions: { selectedQuestion, questionsList, filteredQuestionsList },
+    loading,
+  },
   { router }
 ) => {
   const { id: questionId } = router.params;
@@ -138,6 +163,8 @@ const mapStatetoProps = (
     loading,
     selectedQuestion,
     questionId,
+    questionsList,
+    filteredQuestionsList,
   };
 };
 
